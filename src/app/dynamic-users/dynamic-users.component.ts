@@ -13,6 +13,5 @@ export class DynamicUsersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.users)
   }
 }
