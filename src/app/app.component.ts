@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch({type: 'GET_TODOS', payload: ['Do workout', 'Practice Angular']});
 
     setTimeout( () => {
-      // this.store.dispatch({type: 'ADD_USER', payload: 'Anil'});
+      this.store.dispatch({type: 'ADD_USER', payload: 'Anil'});
     }, 2000);
   }
 }
