@@ -10,10 +10,12 @@ export class AppComponent implements OnInit {
   title = 'app';
   users$;
   todos$;
+  dynamicUsers$;
 
   constructor(private store: Store<any>) {
     this.users$ = this.store.select(state => state.user.users);
     this.todos$ = this.store.select(state => state.todo.todos);
+    this.dynamicUsers$ = this.store.select(state => state.user.dynamicUsers);
   }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit {
 
     setTimeout( () => {
       this.store.dispatch({type: 'ADD_USER', payload: 'Anil'});
+      this.store.dispatch({type: 'LOAD_USERS'});
     }, 2000);
   }
 }

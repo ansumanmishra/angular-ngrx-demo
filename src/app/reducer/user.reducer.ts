@@ -13,6 +13,14 @@ export function UserReducer(state = {users: []}, action) {
                 users: [...state.users, action.payload]
             }
         }
+
+        case 'ADD_DYNAMIC_USERS': {
+            return {
+                ...state,
+                dynamicUsers: action.payload
+            }
+        }
+
         default: {
             return state;
         }
