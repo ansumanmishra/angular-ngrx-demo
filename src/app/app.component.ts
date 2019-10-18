@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as UserActions from './actions/user.action';
 import * as fromTodosAction from './actions/todo.action';
+import { State } from './app.state';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,8 @@ export class AppComponent implements OnInit {
   dynamicUsers$;
 
   constructor(private store: Store<any>) {
-    this.users$ = this.store.select(state => state.user.users);
-    this.todos$ = this.store.select(state => state.todo.todos);
+    this.users$ = this.store.select( (state: State ) => state.user.users);
+    this.todos$ = this.store.select( (state: State) => state.todo.todos);
     this.dynamicUsers$ = this.store.select(state => state.user.dynamicUsers);
   }
 

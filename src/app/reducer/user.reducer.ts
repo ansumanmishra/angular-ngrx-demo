@@ -1,6 +1,16 @@
 import * as fromUserActions from '../actions/user.action';
 
-export function UserReducer(state = {users: []}, action: fromUserActions.UserActions) {
+export interface UserState {
+    users: string[];
+    dynamicUsers: object[];
+  }
+
+const initialUserState: UserState = {
+    users: ['a', 'b'],
+    dynamicUsers: [{name: 'Ansuman'}],
+}
+
+export function UserReducer(state = initialUserState, action: fromUserActions.UserActions) {
     switch(action.type) {
         case fromUserActions.GET_USERS: {
             return {
