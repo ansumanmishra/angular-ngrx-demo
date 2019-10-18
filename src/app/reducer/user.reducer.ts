@@ -1,20 +1,22 @@
-export function UserReducer(state = {users: []}, action) {
+import * as fromUserActions from '../actions/user.action';
+
+export function UserReducer(state = {users: []}, action: fromUserActions.UserActions) {
     switch(action.type) {
-        case 'GET_USERS': {
+        case fromUserActions.GET_USERS: {
             return {
                 ...state,
                 users: ['ANSUMAN', 'DEBASRITA']
             };
         }
 
-        case 'ADD_USER': {
+        case fromUserActions.ADD_USER: {
             return {
                 ...state,
                 users: [...state.users, action.payload]
             }
         }
 
-        case 'ADD_DYNAMIC_USERS': {
+        case fromUserActions.ADD_DYNAMIC_USERS: {
             return {
                 ...state,
                 dynamicUsers: action.payload

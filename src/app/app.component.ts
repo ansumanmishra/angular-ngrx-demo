@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import * as UserActions from './actions/user.action';
+import * as fromTodosAction from './actions/todo.action';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +21,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch({type: 'GET_USERS'});
-    this.store.dispatch({type: 'GET_TODOS', payload: ['Do workout', 'Practice Angular']});
+    this.store.dispatch(new UserActions.GetUsersAction());
+    this.store.dispatch(new fromTodosAction.GetTodosAction(['Do workout', 'Practice Angular & React']));
 
     setTimeout( () => {
-      this.store.dispatch({type: 'ADD_USER', payload: 'Anil'});
-      this.store.dispatch({type: 'LOAD_USERS'});
+      this.store.dispatch(new UserActions.AddUserAction('Anil'));
+      this.store.dispatch(new UserActions.LoadUsersAction());
     }, 2000);
   }
 }
